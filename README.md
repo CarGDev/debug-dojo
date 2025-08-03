@@ -4,6 +4,10 @@ Welcome to the chaos lab where we intentionally break things so you can learn to
 
 Built with Vite + React + TypeScript, Ant Design, and Atomic Design principles, this app fetches Pokémon data from the PokeAPI. But here's the catch: it's riddled with bugs, both real and intentional, waiting for you to discover and understand.
 
+![Pokémon Explorer App Interface](assets/APP_VIEW.png)
+
+*The app in action: Search for Pokémon, discover bugs, learn debugging.*
+
 ## Bugs (Challenges)
 
 Your mission: identify them, understand their root causes, and document your findings. There may be one bug we didn't list. If you find it, we owe you bragging rights.
