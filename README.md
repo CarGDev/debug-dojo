@@ -122,6 +122,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 These articles go deeper into the strategies and mindset that will make you a more effective frontend debugger.
 
+### **Real-World Debugging Cases: Lessons from the Frontlines**
+Explore three critical debugging scenarios that demonstrate how systematic debugging approaches saved companies millions and transformed development practices. Learn from Slack's Redux performance crisis, Datadog's $5M outage, and Google's AI-powered debugging automation.
+[Read the full analysis here](DEBUGGING_CASES.md)
+
 ### **How to Debug CSS**
 *by S. Mustaf*
 Covers CSS debugging techniques, common styling issues, and how to use browser DevTools to troubleshoot layout and styling problems effectively.
