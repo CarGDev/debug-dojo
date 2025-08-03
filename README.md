@@ -1,112 +1,109 @@
-# Pokémon Explorer App
+# Pokémon Explorer: Your Frontend Debugging Dojo
 
-A Vite + React + TypeScript application that allows users to search for Pokémon and view their details using the PokeAPI.
+Welcome to the chaos lab where we intentionally break things so you can learn to fix them. This isn't your typical React app—it's a carefully crafted debugging playground designed to sharpen your frontend problem-solving skills.
 
-## Features
+Built with Vite + React + TypeScript, Ant Design, and Atomic Design principles, this app fetches Pokémon data from the PokeAPI. But here's the catch: it's riddled with bugs, both real and intentional, waiting for you to discover and understand.
 
-- Search for Pokémon by name with autocomplete suggestions
-- Display Pokémon details including:
-  - Name and image
-  - Types
-  - Base stats with progress bars
-  - Height and weight
-- Modern UI built with Ant Design
-- Atomic Design architecture
-- Centralized state management with Zustand
-- API layer with axios for data fetching
+## Bugs (Challenges)
 
-## Project Structure
+Your mission: identify them, understand their root causes, and document your findings. There may be one bug we didn't list. If you find it, we owe you bragging rights.
+
+### API Issues
+- [ ] **Limited Pokémon Access**: Only the first 150 Pokémon load, even though 1300+ exist
+  - *Potential cause: API pagination logic or data fetching limits*
+  - *Consequence: Users miss out on most of the Pokémon universe*
+
+- [ ] **Duplicate API Calls**: The app hits the API twice on initial load
+  - *Potential cause: Multiple useEffect hooks or component re-renders*
+  - *Consequence: Unnecessary network traffic and potential rate limiting*
+
+- [ ] **No Debounce + Overeager Search**: API calls trigger on every keystroke instead of waiting for user action (search button or autocomplete selection)
+  - *Potential cause: Missing debounce implementation + autocomplete calling API on input change instead of user selection*
+  - *Consequence: Massive API abuse, poor performance, and potential rate limiting*
+
+### UI/UX Bugs
+- [ ] **Random Error Messages**: Failed searches show confusing, unhelpful messages
+  - *Potential cause: Generic error handling or incorrect error mapping*
+  - *Consequence: Poor user experience and debugging confusion*
+
+- [ ] **Silent 404 Failures**: Search for a non-existent Pokémon and watch... nothing happen
+  - *Debugging angle: Error handling, API response processing, state management*
+  - *Learning goal: Understand how to catch and handle API errors gracefully*
+
+- [ ] **UI Flicker**: Search for a new Pokémon and see the old one flash briefly
+  - *Debugging angle: Component lifecycle, state transitions, loading states*
+  - *Learning goal: Master the art of smooth UI transitions*
+
+### State & Lifecycle
+- [ ] **Stat Swapping**: Speed and defense stats are mysteriously swapped
+  - *Debugging angle: Data transformation, mapping logic, API response structure*
+  - *Learning goal: Trace data flow from API to UI display*
+
+### Type Safety Problems
+- [ ] **TypeScript Assumptions**: The app assumes optional fields are always present
+  - *Debugging angle: Type definitions, runtime safety, optional chaining*
+  - *Learning goal: Bridge the gap between TypeScript types and runtime reality*
+
+## How to Think Like a Debugger
+
+### Sharp Practices for Faster Debugging
+
+**Start with the obvious, not the exotic**
+- Check the console first. Seriously. Most bugs announce themselves loudly.
+
+**Reproduce the bug three different ways**
+- If you can't trigger it consistently, you're probably debugging the wrong thing.
+
+**Narrate your debugging process out loud**
+- Your brain catches flawed assumptions when you have to explain them to someone (even if that someone is your rubber duck).
+
+**Debug without logs first**
+- Force yourself to trace the code manually. It builds mental models faster than console.log ever will.
+
+**Question your debugging tools**
+- Don't just use the debugger—understand why it's showing you what it's showing you.
+
+**Keep a debugging journal**
+- Write down your false leads and dead ends. Pattern recognition is your superpower.
+
+## Quick Start
+
+Clone the repo, install dependencies, and fire up the dev server.
+
+```bash
+npm install
+npm run dev
+```
+
+Open http://localhost:5173 and start breaking things (or rather, finding what's already broken).
+
+## Directory Overview
 
 ```
 src/
-├── api/                # API layer with axios
-│   ├── config.ts       # Axios configuration
-│   ├── get/            # GET requests
-│   ├── post/           # POST requests
-│   ├── put/            # PUT requests
-│   ├── delete/         # DELETE requests
-│   └── index.ts        # API exports
-├── components/
-│   ├── atoms/          # Basic UI elements (Input, Button, AutoComplete)
-│   ├── molecules/      # Combinations (SearchBar)
-│   ├── organisms/      # Complex components (PokemonDetails)
-│   ├── templates/      # Layout structure (MainLayout)
-│   └── pages/          # Route-level views (Home)
-├── stores/             # Zustand state management
-│   ├── pokemonStore.ts # Pokémon state store
-│   └── index.ts        # Store exports
-├── styles/             # SCSS modules
-│   ├── global.module.scss  # Global styles
-│   ├── app.module.scss     # App-specific styles
-│   └── index.ts            # Style exports
-└── types/              # TypeScript type definitions
+├── api/                # Axios setup and API calls
+├── components/         # Atomic Design structure
+│   ├── atoms/         # Basic UI elements
+│   ├── molecules/     # Component combinations
+│   ├── organisms/     # Complex components
+│   ├── templates/     # Layout structure
+│   └── pages/         # Route-level views
+├── stores/            # Zustand state management
+├── styles/            # SCSS modules
+└── types/             # TypeScript definitions
 ```
 
-## Path Aliases
+## Learning Goals
 
-The project uses path aliases for cleaner imports:
+By the time you're done with this app, you should be able to:
 
-- `@/` - Points to `src/`
-- `@components/` - Points to `src/components/`
-- `@styles/` - Points to `src/styles/`
-- `@pokemonTypes/` - Points to `src/types/`
-- `@api/` - Points to `src/api/`
-- `@stores/` - Points to `src/stores/`
+- **Spot the difference** between real bugs and intentional ones
+- **Trace data flow** from API response to UI display
+- **Debug state management** issues in complex React applications
+- **Handle API errors** gracefully and informatively
+- **Optimize performance** by identifying unnecessary re-renders and API calls
+- **Think systematically** about debugging instead of guessing
+- **Document your debugging process** for future reference
+- **Explain your fix to someone else** to test if you truly understand it
 
-Example usage:
-```typescript
-// Instead of: import { PokemonInput } from '../../components/atoms/PokemonInput';
-import { PokemonInput } from '@components/atoms/PokemonInput';
-
-// Instead of: import styles from '../../styles/app.module.scss';
-import styles from '@styles/app.module.scss';
-
-// Instead of: import { getPokemon } from '../../api/get/pokemon';
-import { getPokemon } from '@api/get/pokemon';
-
-// Instead of: import { usePokemonStore } from '../../stores/pokemonStore';
-import { usePokemonStore } from '@stores/pokemonStore';
-```
-
-## Intentional Bugs (For Debugging Session)
-
-⚠️ **These bugs are intentionally left in the code for debugging practice:**
-
-1. **Silent Failure**: When a Pokémon doesn't exist, no error message is shown - the app silently fails
-2. **UI Flickering**: When searching for a new Pokémon, the previous data briefly disappears causing a flicker effect
-3. **Incorrect Stat Mapping**: Speed and defense stats are swapped in the display
-4. **TypeScript Error**: The `height` field is assumed to always be present when it's actually optional in the API
-
-## Getting Started
-
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-3. Open your browser and navigate to the URL shown in the terminal
-
-## Usage
-
-1. Enter a Pokémon name in the search bar (e.g., "pikachu", "charizard", "bulbasaur")
-2. Click "Search" or press Enter
-3. View the Pokémon's details including stats, types, and image
-
-## Technologies Used
-
-- **Vite** - Build tool and dev server
-- **React** - UI framework
-- **TypeScript** - Type safety
-- **Ant Design** - UI component library
-- **PokeAPI** - Pokémon data source
-
-## Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
+Remember: The goal isn't to fix everything perfectly. It's to build the debugging instincts that will serve you in real-world development. Happy hunting!
