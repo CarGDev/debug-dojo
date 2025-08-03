@@ -107,3 +107,38 @@ By the time you're done with this app, you should be able to:
 - **Explain your fix to someone else** to test if you truly understand it
 
 Remember: The goal isn't to fix everything perfectly. It's to build the debugging instincts that will serve you in real-world development. Happy hunting!
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Recommended Reading & Debugging Resources
+
+These articles go deeper into the strategies and mindset that will make you a more effective frontend debugger.
+
+### **How to Debug CSS**
+*by S. Mustaf*
+Covers CSS debugging techniques, common styling issues, and how to use browser DevTools to troubleshoot layout and styling problems effectively.
+[Read it here](https://medium.com/@s.mustaf.m/how-to-debug-css-5aa17307267a)
+
+### **Practical Debugging Guide: The Art of Solving Frontend Problems**
+*by João Victor*
+A comprehensive guide covering Chrome DevTools mastery, React debugging techniques, unit testing strategies, and security best practices for effective frontend problem-solving.
+[Read it here](https://dev.to/fonteeboa/practical-debugging-guide-the-art-of-solving-frontend-problems-15p5)
+
+### **Stop Googling: How AI Changed the Way I Debug Frontend Code**
+*by JavaScript in Plain English*
+Discusses how modern devs are pairing intuition with AI tools (like ChatGPT) to form better hypotheses, understand unfamiliar codebases, and debug faster.
+[Read it here](https://javascript.plainenglish.io/stop-googling-how-ai-changed-the-way-i-debug-frontend-code-bcb86946594c)
+
+### **5 Common Types of Frontend Bugs and How to Debug Them**
+*by José Matos*
+Covers recurring frontend bugs—like async race conditions, re-render issues, and DOM manipulation problems—and how to spot them quickly in the wild.
+[Read it here](https://blog.josematos.work/5-common-types-of-frontend-bugs-and-how-to-debug-them-b0e8de38166e)
+
+### **Understand the Basics of Frontend Debugging and Troubleshooting**
+*by Bikash Halder*
+A foundational guide covering essential debugging concepts, common troubleshooting techniques, and systematic approaches to solving frontend problems.
+[Read it here](https://medium.com/@bikashhalder002/understand-the-basics-of-frontend-debugging-and-troubleshooting-ffe6fb8b4a44)
